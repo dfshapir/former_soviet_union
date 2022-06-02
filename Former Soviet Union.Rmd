@@ -26,7 +26,7 @@ plot1 <- ggplot(pointdistance, aes(x = year, y = IdealPointDistance, color = Cou
   labs(x = "Year", 
        y = "Ideal Point Distance",
        title = "Level of Discrepancy between FSU Country and Russia in UN",
-       subtitle = "2014-2021. Data from Voeten et al. 2009",
+       subtitle = "2014-2020. Data from Voeten et al. 2009",
        caption = "Higher numbers indicate higher degrees of voting discrepancy between the two countries.") +
   theme(plot.caption = element_text(size = 6))
 plot1
