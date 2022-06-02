@@ -1,0 +1,33 @@
+---
+title: "Former Soviet Union"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+```{r readin}
+load("AgreementScores.Rdata")
+```
+
+```{r data_wr}
+pointdistance <- dfAgree %>%
+  filter(year >= 2014) %>%
+  filter(Countryname.x == "Russia") %>%
+  filter(Countryname.y %in% c("Belarus", "Kazakhstan", "Armenia", "Azerbaijan")) %>%
+  group_by(Countryname.y)
+```
+
+```{r ggplot1}
+plot1 <- ggplot(pointdistance, aes(x = year, y = IdealPointDistance, color = Countryname.y)) +
+  geom_line() +
+  labs(x = "Year", 
+       y = "Ideal Point Distance",
+       title = "Level of Discrepancy between FSU Country and Russia in UN",
+       subtitle = "2014-2021. Data from Voeten et al. 2009",
+       caption = "Higher numbers indicate higher degrees of voting discrepancy between the two countries.") +
+  theme(plot.caption = element_text(size = 6))
+plot1
+```
